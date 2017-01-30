@@ -21,8 +21,6 @@ int *pattern(string b){
             }
         }
     }
-
-    cout<<endl;
     return lps;
 }
 int kmp(string a, string b){    //finds string b in a
