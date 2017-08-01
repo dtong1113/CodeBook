@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 
+//https://leetcode.com/problems/median-of-two-sorted-arrays/description/
 using namespace std;
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);
 double findNthSmallest(vector<int>& nums1, vector<int>&nums2, int N);
 int main(){
     vector<int> nums1 = {1, 2, 3, 4, 5};
@@ -8,15 +10,22 @@ int main(){
     int a;
     cin>>a;
     while(a >= 0) {
-        cout<<findNthSmallest(nums1, nums2, a);
+        cout<<findMedianSortedArrays(nums1, nums2);
         cin>> a;
     }
-
+}
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+    int total = nums1.size() + nums2.size();
+    if(total%2 == 1) {
+        return findNthSmallest(nums1, nums2, total/2);
+    } else {
+        return (findNthSmallest(nums1, nums2, total/2) + findNthSmallest(nums1, nums2, total/2 - 1))/2;
+    }
 }
 double findNthSmallest(vector<int>& nums1, vector<int>&nums2, int N) {
     int size1 = nums1.size();
     int size2 = nums2.size();
-
+    N++;
     int index1 = 0;
     int index2 = 0;
     while(index1 + index2 < N -1) {
@@ -32,9 +41,9 @@ double findNthSmallest(vector<int>& nums1, vector<int>&nums2, int N) {
     }
 
     if(size1 > index1 && (size2 <= index2 || (nums1[index1] < nums2[index2]))) {
-        return nums1[index1];
+        return (double) nums1[index1];
     } else {
-        return nums2[index2];
+        return (double) nums2[index2];
     }
 }
 //https://stackoverflow.com/questions/4607945/how-to-find-the-kth-smallest-element-in-the-union-of-two-sorted-arrays
