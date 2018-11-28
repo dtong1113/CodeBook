@@ -15,5 +15,6 @@ int mod = 1e9 + 7;
 int main() {
   //ifstream cin("input.txt");
   //ofstream cout("out.txt");
+
   return 0;
 }

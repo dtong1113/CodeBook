@@ -71,6 +71,7 @@ bool isTriangle(ll x1, ll y1, ll x2, ll y2, ll x3, ll y3) {
   }
   return false;
 }
+
 int main() {
   int N;
   cin >> N;
